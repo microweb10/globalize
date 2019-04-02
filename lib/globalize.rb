@@ -77,7 +77,7 @@ module Globalize
     end
 
     def read_fallbacks
-      storage[:globalize_fallbacks] || HashWithIndifferentAccess.new
+      @fallbacks || HashWithIndifferentAccess.new
     end
 
     def set_fallbacks(locales)
@@ -87,7 +87,7 @@ module Globalize
         fallback_hash[key] = value.presence || [key]
       end if locales.present?
 
-      storage[:globalize_fallbacks] = fallback_hash
+      @fallbacks = fallback_hash
     end
   end
 end
